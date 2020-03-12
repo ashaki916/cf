@@ -1,0 +1,6 @@
+Resources:
+    S3Bucket1:
+        Type: AWS::s3::Bucket
+        DeletionPolicy: Retain
+        Properties:
+            BucketName: sce-test
