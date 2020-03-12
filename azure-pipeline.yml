@@ -1,0 +1,17 @@
+jobs:
+- job: MyJob
+  pool:
+    vmImage: 'ubuntu-16.04'
+  displayName: My First Job
+  continueOnError: true
+  workspace:
+    clean: outputs
+  steps:  
+  - task: CloudFormationCreateOrUpdateStack@1
+    inputs:
+      awsCredentials: 'azureuser'
+      regionName: 'us-east-1'
+      stackName: 'IAMRoleStack'
+      templateFile: cf/create_bucket.yml
+      capabilityIAM: 'true'
+      capabilityNamedIAM: 'true'
